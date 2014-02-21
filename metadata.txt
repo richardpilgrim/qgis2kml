@@ -1,7 +1,7 @@
 ; the next section is mandatory
 [general]
 name=qgis2kml
-qgisMinimumVersion=1.8
+qgisMinimumVersion=2.0
 description=This plugin convert a vector file loaded into QGIS to kml with style
 category=Vector
 version=0.2

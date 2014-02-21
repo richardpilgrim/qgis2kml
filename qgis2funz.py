@@ -25,9 +25,10 @@ def fieldsName(layer):
     #fields of a layer (in number)
     fields = vprovider.fields()
     nameFields=[]
-    for k,v in fields.iteritems():
+    for i in range(fields.count()):
         #add the name of field
-        nameFields.append(v.name())
+		v = fields[i]
+		nameFields.append(v.name())
     #return a list with the name of fields
     return nameFields
 
