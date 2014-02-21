@@ -83,8 +83,8 @@ class QGIS2KML:
                 nameFields = fieldsName(layer)
                 self.layers[layer] = nameFields
                 #this is for remove "layerid=*" when use "Unique Value" symbology
-                source=layer.source()
-                source.remove(QRegExp('\|layerid=[\d]+$'))
+                source=layer.displayField()
+                #source.remove(QRegExp('\|layerid=[\d]+$'))
                 #create and add item of the source to table layer list
                 item = QTableWidgetItem(source)
                 self.dlg.ui.tablelayers.setItem(n_layer,0, item)
