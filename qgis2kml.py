@@ -120,8 +120,8 @@ class QGIS2KML:
     def SelectKmlDir(self):
         #set up the output dir for new vector files
         global mydir
-        mydir = QFileDialog.getExistingDirectory( None,QString("Choose the GML"\
-        " files destination folder"),"")
+        mydir = QFileDialog.getExistingDirectory( None,"Choose the GML"\
+        " files destination folder","")
         if not mydir:
             QMessageBox.warning(self.iface.mainWindow(), self.MSG_BOX_TITLE, 
             ("You have to choose a folder"), QMessageBox.Ok, 
@@ -163,8 +163,8 @@ class QGIS2KML:
             if layer.geometryType() > 0:
                 QMessageBox.warning(self.iface.mainWindow(), self.MSG_BOX_TITLE, 
                 ("Layer %s: format not yet supported" % layer.name()), QMessageBox.Ok, QMessageBox.Ok)
-            source = layer.source()
-            source.remove(QRegExp('\|layerid=[\d]+$'))
+            source = layer.displayField()
+            #source.remove(QRegExp('\|layerid=[\d]+$'))
             if source != self.dlg.ui.tablelayers.item(nrow,0).text():
                 QMessageBox.warning(self.iface.mainWindow(), self.MSG_BOX_TITLE, 
                 ("An error occur with vector: %s" % layer.name()), QMessageBox.Ok, QMessageBox.Ok)

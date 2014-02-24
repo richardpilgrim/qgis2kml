@@ -54,9 +54,10 @@ class qgis2kmlClassStyle:
         #layer name
         self.name = self.layer.name()
         # layer renderer
-        if self.layer.renderer() != None:
-            raise Exception, "Old symbology doen't support\n"
-        elif self.layer.rendererV2() != None:
+		# Not sure why it is checking for the old renderer so removing this line
+        # if self.layer.renderer() != None:
+            # raise Exception, "Old symbology doen't support\n"
+        if self.layer.rendererV2() != None:
             self.renderer = self.layer.rendererV2()
             #type of rendering
             self.typeRend = str(self.renderer.type())
