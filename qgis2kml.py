@@ -184,7 +184,7 @@ class QGIS2KML:
 			SrsDest = QgsCoordinateReferenceSystem(4326)
 			#trasform
 			SrsTrasform = QgsCoordinateTransform(SrsSrc, SrsDest)
-			qgisFeat = QgsFeature()
+			#qgisFeat = QgsFeature()
 			# allAttrs = provider.attributeIndexes()
 			# provider.select(allAttrs)
 			if style.output['type'] != 'singleSymbol':
@@ -192,7 +192,7 @@ class QGIS2KML:
 			for qgisFeat in layer.getFeatures():
 			#while provider.nextFeature(qgisFeat):
 				geom = qgisFeat.geometry()
-				attrs = qgisFeat.attributeMap()
+				attrs = qgisFeat.attributes()
 				if geom.wkbType() == QGis.WKBPoint:
 					feat = folder.newpoint()
 					new_geom = SrsTrasform.transform(geom.asPoint())
@@ -249,12 +249,12 @@ class QGIS2KML:
 				#if self.dlg.ui.nameTableItem.currentIndex() != 0:
 				nid = self.dlg.ui.tablelayers.cellWidget(nrow,1).currentIndex()
 				if nid != 0:
-					n = attrs[nid-1].toString()
+					n = str(attrs[nid-1])
 					if n:
 						feat.name = n
 				did = self.dlg.ui.tablelayers.cellWidget(nrow,2).currentIndex()
 				if did != 0:
-					d = attrs[did-1].toString()
+					d = str(attrs[did-1])
 					if d:
 						feat.description = d
 
